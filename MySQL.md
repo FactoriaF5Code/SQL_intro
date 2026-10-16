@@ -2,7 +2,7 @@
 # MySQL
 ---
 Indice:
-- [¿Qué es?](#que-es)
+- [¿Qué es?](#qué-es)
 - [Paso a paso para utilizar MySQL](#paso-a-paso-para-utilizar-mysql)
 - [Relaciones entre tablas](#relaciones-entre-tablas)
 
@@ -11,9 +11,9 @@ Indice:
 
 👉**SQL** es un lenguaje para hacer consultas a datos.
 
-👉**MySQL** Es un sistema de gestión de Bases de datos relaciones. Es un conjunto de programas que nos permite gestionar todos los datos sin tener que programar demasiado. Nos da las funciones de SQL ya configuradas👌
+👉**MySQL** Es un sistema de gestión de Bases de datos relacionales. Es un conjunto de programas que nos permite gestionar todos los datos sin tener que programar demasiado. Nos da las funciones de SQL ya configuradas👌
 
-👉**Workbench** es un entorno de desarrollo integrado que nos permite gestionarlo todo con una interfaz gráfica más amigable.
+👉**Workbench** es un entorno de desarrollo integrado que nos permite gestionarlo todo con una interfaz gráfica más amigable. 👁👉 [Guía de Workbench](./Workbench.md)
     
 👉**RDBMS:**  (Relational Database Management System, o Sistema de Gestión de Bases de Datos Relacional) es un tipo de software que gestiona y organiza bases de datos en las que los datos se almacenan y estructuran en **tablas** que están relacionadas entre sí. 
     
@@ -29,9 +29,9 @@ Primero de todo instalamos **MySQL Workbench** 💻
 
 💻Windows: tiene un instalador que instala todo de una.
 
-💻Mac: hay que descargarse e instalar por un lado SQL server y por otro lado SQL workbench.
+💻Mac: hay que descargarse e instalar por un lado MySQL Server y por otro lado MySQL Workbench.
 
-💻Ubuntu: se instala SQL por comando de consola y se descarga de la app store workbench.
+💻Ubuntu: se instala MySQL por comando de consola y se descarga de la app store workbench.
 
 
 
@@ -40,7 +40,7 @@ Primero de todo instalamos **MySQL Workbench** 💻
 
 Antes de ponernos a crear bases de datos y tablas, tengamos en cuenta esta convención:
 
-> 💡 👀 *las tablas tienen nombres en plural y se escriben minúscula*
+> 💡 👀 *las tablas tienen nombres en plural y se escriben en minúscula*
 
 Existen varias formas de crear bases de datos, si hacemos uso de mysql solo por consola:
 
@@ -59,17 +59,17 @@ show databases;
 use el_nombre_de_la_basededatos;
 
 -- 💁‍♀️ si vas a crear una nueva base de datos
-create database nombre_nueva_base_de_datos
-use nombre_base_de_datos
+create database nombre_nueva_base_de_datos;
+use nombre_nueva_base_de_datos;
 
 -- 💁‍♀️ si vas a crear una tabla por ejemplo una de user
-create table users(id BINARY(16) PRIMARY KEY NOT NULL DEFAULT (UUID_TO_BIN(UUID())), name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, role VARCHAR(255), password VARCHAR(255)NOT NULL);
+create table users(id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, role VARCHAR(255), password VARCHAR(255)NOT NULL);
 
 -- 💁‍♀️si quieres ver tus tablas
 show tables;
 
--- 💁‍♀️si queires ver la estructura concreta de una tabla
-describe nombre_de_la_tabla
+-- 💁‍♀️si quieres ver la estructura concreta de una tabla
+describe nombre_de_la_tabla;
 ```
 
 
@@ -95,7 +95,7 @@ CREATE TABLE dni (
     user_id INT UNIQUE, -- Clave foránea que relaciona con user_id
     dni_number VARCHAR(100),
     FechaVencimiento DATE,
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 ```
@@ -106,7 +106,7 @@ una relación **one-to-many** (uno a muchos) en una base de datos significa que 
 CREATE TABLE users (
     user_id INT PRIMARY KEY,
     user_name VARCHAR(50),
-    email VARCHAR(100),
+    email VARCHAR(100)
 );
 ```
 
@@ -123,10 +123,9 @@ CREATE TABLE books (
 Una relación **many-to-many** (muchos a muchos) en una base de datos ocurre cuando un conjunto de registros en una tabla está relacionado con un conjunto de registros en otra tabla, y viceversa. Esto significa que un registro en **una tabla puede estar relacionado con varios registros en la otra tabla**, y a su vez, un registro **en la segunda tabla puede estar relacionado con varios registros en la primera tabla.**
 
 ```sql
-
-);CREATE TABLE categories (
+CREATE TABLE categories (
     category_id INT PRIMARY KEY,
-    category_name VARCHAR(50),
+    category_name VARCHAR(50)
 );
 ```
 
@@ -134,8 +133,7 @@ Una relación **many-to-many** (muchos a muchos) en una base de datos ocurre cua
 CREATE TABLE books (
 book_id INT PRIMARY KEY,
 title VARCHAR(100),
-author VARCHAR(100),
-
+author VARCHAR(100)
 );
 ```
 
@@ -162,7 +160,7 @@ Entonces, no es un "array" en el sentido de una estructura de datos que contiene
 
 
 ```sql
-// 💁‍♀️si quiere crear una tabla con una foreign key
+-- 💁‍♀️si quiere crear una tabla con una foreign key
 CREATE TABLE books(
 id int auto_increment,
 PRIMARY KEY (id),
@@ -179,7 +177,7 @@ ON UPDATE CURRENT_TIMESTAMP
 
 
 ```sql
-// 💁‍♀️si quiere añadir una foreing key a una tabla ya creada añadiendo una columna
+-- 💁‍♀️si quiere añadir una foreign key a una tabla ya creada añadiendo una columna
  ALTER TABLE files
  ADD id_user INT,
  ADD CONSTRAINT fk_files_users FOREIGN KEY (id_user) REFERENCES users(id);

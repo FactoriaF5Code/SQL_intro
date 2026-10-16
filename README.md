@@ -17,10 +17,11 @@ Es un sistema para almacenar datos y conectarlos entre sí en una unidad lógica
 
 > 📖Si yo tengo un cuaderno donde apunto todos los pedidos que hacen mis clientes, mi cuaderno es una base de datos.
 
-Volviendo al punto en el que estabamos antes, hablando de SQL como un **lenguaje de consulta**  diseñado específicamente **para gestionar y consultar bases de datos relacionales**. 
-Vamos hacer hincapié en la parte de bases de datos relacionales, porqué es "la base" de las bases de datos SQL 👇
+Volviendo al punto en el que estábamos antes, hablando de SQL como un **lenguaje de consulta**  diseñado específicamente **para gestionar y consultar bases de datos relacionales**. 
+Vamos a hacer hincapié en la parte de bases de datos relacionales, porque es "la base" de las bases de datos SQL 👇
 
 Una **base de datos relacional** organiza la información en **tablas**.
+
 ----
 Cada tabla tiene:
 
@@ -34,8 +35,8 @@ Cada tabla tiene:
 
  La tabla del ejemplo tiene 2 registros, 3 columnas:
  
-- **Filas:**  `1, Juan, juana@email.com`, `2, Roberto, roberto@email.com`
-- **Columnas :** `id`, `nombre`, `email`
+- **Filas:**  `1, Juana, juana@email.com`, `2, Roberto, roberto@email.com`
+- **Columnas :** `id`, `name`, `email`
 
 ### ¿Cómo funcionan las relaciones?
 
@@ -89,7 +90,7 @@ Seguramente te estarás preguntando: ¿por qué?😭😭😭
 La respuesta es simple: SQL es un lenguaje, no un programa o sistema que pueda ejecutar instrucciones por sí mismo.
 
 - 👁👉 [¿Cómo trabajar con MySQL?](./MySQL.md)
-- 👁👉 [¿Cómo trabajar con PostgreSQL?](./postgreSQL.md)
+- 👁👉 [¿Cómo trabajar con MySQL Workbench (interfaz gráfica)?](./Workbench.md)
 
   De todas formas antes de meterte directamente con un SGBD, si es tu primera vez con SQL te recomiendo comenzar con:
 - 👶 [web guiada para hacer primeras consultas ](https://www.sql-easy.com/es/tutorial/)
